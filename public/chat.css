@@ -1,0 +1,500 @@
+:root {
+    --chat-color-white: #fff;
+    --chat-color-main: #2c2d30;
+    --chat-color-main-fade: #2c2d3000;
+    --chat-color-secondary: #171717;
+    --chat-color-secondary-fade: #17171700;
+    --chat-color-button-hover: #242629;
+    --chat-color-button-hover-fade: #24262900;
+    --chat-color-user-icon: #8e0000;
+    --chat-color-groupings: #9ca6b5;
+    --chat-color-gpt-icon: #000000;
+    --chat-color-black: #1e1e1f;
+    --chat-color-user-menu-hover: #383b42;
+    --chat-color-text: #f5f9ff;
+    --chat-color-gpt3: #5fc319;
+    --chat-color-gpt4: #f22626;
+    --chat-color-secondary-p: #c9ccd1;
+    --chat-color-logo: #848484;
+    --chat-color-model-name: #ffffff;
+    --chat-color-assistant-bg: #3f4042;
+    --chat-color-assistant-text: #e1e6ed;
+    --chat-color-disclaimer: #d0d2e1;
+    --chat-color-border1: #484a4e;
+    --chat-color-user-menu-border: #34373a;
+    --chat-color-user-menu-selected-border: #4a5562;
+    --chat-color-border2: #292d32;
+    --chat-color-user-message-border: #2f353d;
+}
+
+.grandai {
+    background: var(--chat-color-main);
+    display: flex;
+    font-size: 1em;
+}
+
+#chatsidebar {
+    position: relative;
+    left: 0;
+    background: var(--chat-color-secondary);
+    width: 260px;
+    padding: 8px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: all 0.2s ease-in-out;
+}
+
+.grandai .float-top {
+    display: flex;
+    flex-direction: column;
+    height: calc( 100% - 50px );
+}
+
+#chatsidebar.hidden {
+    left: -260px;
+    margin-right: -260px;
+}
+
+#chatsidebar.hidden .hide-sidebar {
+    left: 60px;
+    transform: rotate(180deg);
+    padding: 15px 13px 11px 13px;
+}
+
+.grandai button {
+    display: block;
+    background: inherit;
+    border: 1px solid var(--chat-color-border1);
+    border-radius: 5px;
+    color: var(--chat-color-white);
+    padding: 13px;
+    box-sizing: border-box;
+    text-align: left;
+    cursor: pointer;
+}
+
+.grandai button:hover {
+    background: var(--chat-color-button-hover);
+}
+
+.grandai .sidebar-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.grandai .sidebar-controls button {
+    padding: 12px 13px 12px 13px;
+}
+
+.grandai .hide-sidebar {
+    position: relative;
+    left: 0;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    transform: rotate(0deg);
+}
+
+.grandai .new-chat i {
+    margin-right: 13px;
+}
+
+.grandai .new-chat {
+    flex: 1;
+}
+
+.grandai .conversations {
+    width: calc( 100% + 8px );
+    overflow-y: scroll;
+}
+
+.grandai .conversations,
+.grandai .conversations li {
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.grandai .conversations li {
+    position: relative;
+}
+
+.grandai .conversations li .fa {
+    margin-right: 7px;
+}
+
+.grandai .conversations li > button {
+    width: 100%;
+    border: none;
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.grandai .conversations li.active > button {
+    background: var(--chat-color-main);
+}
+
+.grandai .edit-buttons {
+    display: none;
+    position: absolute;
+    right: 8px;
+    top: 0;
+}
+
+.grandai .conversations li:hover .edit-buttons {
+    display: flex;
+}
+
+.grandai .fade {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: var(--chat-color-user-icon);
+    width: 40px;
+    height: 100%;
+    border-radius: 5px;
+    background: transparent;
+    background: linear-gradient(90deg, var(--chat-color-secondary-fade) 0%, var(--chat-color-secondary) 50%);
+}
+
+.grandai .conversations li.active .fade {
+    background: linear-gradient(90deg, var(--chat-color-main-fade) 0%, var(--chat-color-main) 50%);
+}
+
+.grandai .conversations li:hover .fade {
+    width: 80px;
+    background: linear-gradient(90deg, var(--chat-color-button-hover-fade) 0%, var(--chat-color-button-hover) 30%);
+}
+
+.grandai .edit-buttons button {
+    border: none;
+    padding: 0;
+    margin: 13px 1px 13px 1px;
+    opacity: 0.7;
+}
+
+.grandai .edit-buttons button:hover {
+    background: none;
+    opacity: 1;
+}
+
+.grandai .conversations li.grouping {
+    color: var(--chat-color-groupings);
+    font-size: 0.7em;
+    font-weight: bold;
+    padding-left: 13px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+i.user-icon {
+    padding: 6px;
+    color: var(--chat-color-white);
+    background: var(--chat-color-user-icon);
+    display: inline-block;
+    text-align: center;
+    width: 15px;
+    border-radius: 3px;
+    margin-right: 6px;
+    font-style: normal;
+    width: 18px;
+    height: 18px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: system-ui, sans-serif;
+}
+
+.grandai .gpt.user-icon  {
+    background: var(--chat-color-gpt-icon);
+}
+
+.grandai .user-menu {
+    position: relative;
+    border-top: 1px solid var(--chat-color-border1);
+}
+
+.grandai .user-menu button {
+    width: 100%;
+    border: none;
+}
+
+.grandai .user-menu .dots {
+    position: relative;
+    top: 11px;
+    float: right;
+    opacity: 0.7;
+}
+
+.grandai .user-menu > ul,
+.grandai .user-menu li {
+    list-style: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.grandai .user-menu > ul {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    background: var(--chat-color-black);
+    border-radius: 10px;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.grandai .user-menu > ul.show-animate {
+    display: block;
+}
+
+.grandai .user-menu > ul.show {
+    opacity: 1;
+    margin-top: -8px;
+}
+
+.grandai .user-menu li button {
+    border-radius: 0;
+}
+
+.grandai .user-menu li button:hover {
+    background: var(--chat-color-user-menu-hover);
+}
+
+.grandai .user-menu li:first-child button {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.grandai .user-menu li:last-child button {
+    border-top: 1px solid var(--chat-color-user-menu-border);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+:hover::-webkit-scrollbar-thumb {
+    background-color: var(--chat-color-text)c3;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--chat-color-text);
+    border-radius: 5px;
+}
+
+main {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    padding: 0 0 30px 0;
+    box-sizing: border-box;
+}
+
+main .view {
+    display: flex;
+    flex-direction: column;
+}
+
+.grandai .model-selector {
+    position: relative;
+    border-radius: 11px;
+    background: var(--chat-color-secondary);
+    display: flex;
+    padding: 4px;
+    gap: 4px;
+    margin: 24px auto;
+    z-index: 2;
+}
+
+.grandai .model-selector > button {
+    border-radius: 9px;
+    text-align: center;
+    width: 150px;
+    border: none;
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+.grandai .model-selector > button:hover {
+    background: none;
+    opacity: 1;
+}
+
+.grandai .model-selector > button.selected {
+    border: 1px solid var(--chat-color-user-menu-selected-border);
+    background: var(--chat-color-user-menu-hover);
+    opacity: 1;
+}
+
+.grandai .model-selector button .fa {
+    margin-right: 5px;
+}
+
+.grandai .gpt-3 .fa {
+    color: var(--chat-color-gpt3);
+}
+
+.grandai .gpt-4 .fa {
+    color: var(--chat-color-gpt4);
+}
+
+.grandai .model-info {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transform: translateY(100%);
+    padding: 15px;
+    cursor: default;
+}
+
+.grandai .model-info-box {
+    padding: 20px 20px 10px 20px;
+    border-radius: 15px;
+    background: var(--chat-color-secondary);
+    color: var(--chat-color-white);
+    text-align: left;
+}
+
+.grandai .model-selector > button:hover .model-info {
+    display: block;
+}
+
+.grandai .model-selector p {
+    font-size: 1.1em;
+    margin: 0 0 15px 0;
+}
+
+.grandai p.secondary {
+    font-size: 1em;
+    color: var(--chat-color-secondary-p);
+}
+
+.grandai .logo {
+    position: relative;
+    z-index: 1;
+    color: var(--chat-color-logo);
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.3em;
+}
+
+.grandai .view.conversation-view {
+    display: none;
+    overflow-y: auto;
+}
+
+.grandai .model-name {
+    background: var(--chat-color-main);
+    text-align: center;
+    color: var(--chat-color-model-name);
+    padding: 23px;
+    border-bottom: 1px solid var(--chat-color-border2);
+    font-size: 0.85em;
+}
+
+.grandai .message {
+    display: flex;
+    gap: 20px;
+    padding: 25px 60px 15px 60px;
+    border-bottom: 1px solid var(--chat-color-border2);
+    font-size: 0.95em;
+}
+
+.grandai .message .content {
+    padding-top: 5px;
+}
+
+.grandai .user.message {
+    color: var(--chat-color-text);
+}
+
+.grandai .assistant.message {
+    background: var(--chat-color-assistant-bg);
+    color: var(--chat-color-assistant-text);
+}
+
+#message-form {
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 850px;
+    text-align: center;
+    padding: 0px 45px 0 45px;
+    box-shadow: var(--chat-color-main) 0 0 50px;
+}
+
+.grandai .message-wrapper {
+    position: relative;
+}
+
+#message::placeholder {
+    color: var(--chat-color-groupings);
+}
+
+#message {
+    background: var(--chat-color-user-menu-hover);
+    border-radius: 13px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--chat-color-user-message-border);
+    resize: none;
+    padding: 17px 85px 17px 15px;
+    font-family: inherit;
+    font-size: 1em;
+    color: var(--chat-color-white);
+    box-shadow: rgba(0,0,0,0.2) 0 0 45px;
+    outline: none;
+}
+
+.grandai .disclaimer {
+    margin-top: 12px;
+    color: var(--chat-color-disclaimer);
+    font-size: 0.7em;
+}
+
+.grandai .send-button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--chat-color-gpt3);
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 1em;
+    padding: 7px 9px 7px 7px;
+    color: var(--chat-color-white);
+    border: none;
+    margin-top: -2px;
+}
+
+.grandai button.send-button:hover {
+    border: none;
+    background: var(--chat-color-gpt3);
+    color: var(--chat-color-white);
+}
+
+.grandai p {
+    margin: 0 0 1.5em 0;
+}

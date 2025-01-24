@@ -1,0 +1,29 @@
+{
+    "id": "localhost",
+    "name": "Grand Gayrimenkul",
+    "description": "Uygulama ile ilgili açıklama",
+    "short_name": "Grand Gayrimenkul",
+    "icons": [
+       {
+          "src": "https://localhost/appico.png",
+          "sizes": "1024x1024",
+          "type": "image/png"
+       }
+    ],
+    "start_url": "https://localhost/",
+    "display": "standalone",
+    "theme_color": "#c79058",
+    "background_color": "#18181b",
+    "orientation": "portrait",
+    "launch_handler": {
+        "client_mode": ["navigate-existing", "auto"]
+    },
+    "screenshots" : [
+        {
+            "src": "sc.png",
+            "sizes": "1240x719",
+            "type": "image/png",
+            "platform": "wide"
+        }
+    ]
+ }

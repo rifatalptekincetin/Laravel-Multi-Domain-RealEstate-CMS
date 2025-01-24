@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^(.*)$ /public/$1
+RewriteRule ^public/(.*)$ /$1 [L,NC,R=302]
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]

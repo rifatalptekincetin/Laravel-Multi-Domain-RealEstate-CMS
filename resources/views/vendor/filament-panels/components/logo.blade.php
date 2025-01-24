@@ -1,0 +1,1 @@
+<img src="{{ asset('/gg.png') }}" alt="Grand Gayrimenkul" class="h-10">
